@@ -1,0 +1,30 @@
+{
+  "name": "service-api",
+  "version": "1.0.0",
+  "description": "service",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "ts-node src/app.ts",
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "prisma:gen": "prisma generate --schema prisma/schema.prisma",
+    "prisma:mig:dev": "prisma migrate dev --name init --schema prisma/schema.prisma",
+    "prisma:seed": "ts-node prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.10.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "http-status-codes": "^2.3.0",
+    "redis": "^5.5.6",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.8",
+    "prisma": "^6.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
