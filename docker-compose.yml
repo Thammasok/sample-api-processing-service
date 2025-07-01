@@ -42,41 +42,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Express.js Backend Service
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: sample-api-backend
-    environment:
-      NODE_ENV: development
-      PORT: 3000
-      # Database Configuration
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: sample_api_db
-      DB_USER: postgres
-      DB_PASSWORD: postgres123
-      # Redis Configuration
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      # API Configuration
-      API_VERSION: v1
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/app
-      - /app/node_modules
-    networks:
-      - sample-api-network
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    restart: unless-stopped
-    command: npm run dev
-
   # Optional: Redis Commander (Redis GUI)
   redis-commander:
     image: rediscommander/redis-commander:latest
